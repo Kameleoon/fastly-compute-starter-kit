@@ -1,0 +1,34 @@
+# This file describes a Fastly Compute@Edge package. To learn more visit:
+# https://developer.fastly.com/reference/fastly-toml/
+
+authors = ["ezheenchoroev@kameleoon.com"]
+description = " to A starter kit for Fastly's Compute@Edge with Kameleoon built in"
+language = "javascript"
+manifest_version = 2
+name = "Kameleoon Fastly Starter Kit"
+service_id = ""
+
+[setup.backends]
+
+  [setup.backends.kameleooncdn]
+    address = "client-config.kameleoon.com"
+    port = 443
+    
+  [setup.backends.kameleoontracking]
+    address = "api-ssx.kameleoon.com"
+    port = 443
+    
+  [setup.backends.kameleoondata]
+    address = "api-data.kameleoon.com"
+    port = 443
+
+[local_server.backends]
+
+  [local_server.backends.kameleooncdn]
+    url = "https://client-config.kameleoon.com"
+    
+  [local_server.backends.kameleoontracking]
+    url = "https://api-ssx.kameleoon.com"
+    
+  [local_server.backends.kameleoondata]
+    url = "https://api-data.kameleoon.com"

@@ -1,0 +1,33 @@
+{
+  "name": "compute-starter-kit-javascript-empty",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fastly/compute-starter-kit-javascript-empty.git"
+  },
+  "author": "oss@fastly.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fastly/compute-starter-kit-javascript-empty/issues"
+  },
+  "homepage": "https://developer.fastly.com/solutions/starters/compute-starter-kit-javascript-empty",
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "devDependencies": {
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.0"
+  },
+  "dependencies": {
+    "@fastly/js-compute": "^1.1.0",
+    "kameleoon-client-javascript": "^2.1.0",
+    "cookie": "^0.5.0",
+    "uuid": "^9.0.0"
+  },
+  "scripts": {
+    "prebuild": "webpack",
+    "build": "js-compute-runtime bin/index.js bin/main.wasm",
+    "deploy": "npm run build && fastly compute deploy"
+  }
+}
