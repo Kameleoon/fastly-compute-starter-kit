@@ -1,7 +1,7 @@
 # This file describes a Fastly Compute@Edge package. To learn more visit:
 # https://developer.fastly.com/reference/fastly-toml/
 
-authors = ["ezheenchoroev@gmail.com"]
+authors = ["ezheenchoroev@kameleoon.com"]
 description = " to A starter kit for Fastly's Compute@Edge with Kameleoon built in"
 language = "javascript"
 manifest_version = 2
