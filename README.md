@@ -1,6 +1,12 @@
 # Kameleoon + Fastly Compute@Edge Starter Kit
 
-Starter Kit to run Kameleoon Experimentation and Feature Flags on Fastly Compute@Edge service.
+> Starter Kit to run Kameleoon Experimentation and Feature Flags on [Fastly Compute@Edge service](https://www.fastly.com/products/edge-compute).
+
+This Kameleoon Starter Kit for Fastly Compute@Edge uses and extends our Kameleoon JS SDK to provide experimentation and feature flagging on the edge. Without this starter kit, the JS SDK cannot be used with Fasty.
+
+### External Network Calls via Fastly
+
+Kameleoon Starter Kit uses fetch API which comes from Fastly Compute@Edge instead of standard network APIs. That's why JS SDK accepts this fetch API callback on client initialization to override the standard API.
 
 ## How to use
 
