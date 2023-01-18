@@ -6,7 +6,9 @@ This Kameleoon Starter Kit for Fastly Compute@Edge uses and extends our Kameleoo
 
 ### External Network Calls via Fastly
 
-Kameleoon Starter Kit uses fetch API which comes from Fastly Compute@Edge instead of standard network APIs. That's why JS SDK accepts this fetch API callback on client initialization to override the standard API.
+Kameleoon Starter Kit uses fetch API which comes from Fastly Compute@Edge instead of standard network APIs. That's why JS SDK accepts this fetch API callback on client initialization to override the standard API. Note that, fetch API should be passed always along with `configDataFile` to the `KameleoonClient`.
+
+The `configDataFile` is a JSON representation of feature flags and experiments. It contains all the data needed to deliver and track your flag deliveries and experiments. This file is fetched outside of JS SDK in starter kit using Fastly Compute@Edge fetch API. Thus, it is cached on Fastly with custom `ttl` in seconds.
 
 ## How to use
 
