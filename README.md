@@ -6,7 +6,7 @@ This Kameleoon Starter Kit for Fastly Compute@Edge uses and extends our [Kameleo
 
 ### External Network Calls via Fastly
 
-Kameleoon Starter Kit uses fetch API which comes from Fastly Compute@Edge instead of standard network APIs. That's why JS SDK accepts this fetch API callback on client initialization to override the standard API. Note that, fetch API should be passed always along with `configDataFile` to the `KameleoonClient`.
+Kameleoon Starter Kit uses fetch API which comes from Fastly Compute@Edge instead of standard network APIs. That's why JS SDK accepts this `dispatchEvent` callback on client initialization to override the standard API call. Note that, `dispatchEvent` should be passed always along with `configDataFile` to the `KameleoonClient`.
 
 ### Configuration Data File
 
