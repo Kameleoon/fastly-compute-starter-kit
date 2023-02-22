@@ -1,6 +1,8 @@
 import { CacheOverride } from "fastly:cache-override";
 
 const BACKEND_CDN = "kameleooncdn";
+const BACKEND_TRACKING = "kameleoontracking";
+const BACKEND_DATA = "kameleoondata";
 
 export async function getConfigDataFile(siteCode, ttl) {
   const dataFileRequest = new Request(
@@ -18,4 +20,16 @@ export async function getConfigDataFile(siteCode, ttl) {
   });
 
   return await fetchedDataFile.text();
+}
+
+export function dispatchEvent({ url, method, headers, data }) {
+  const eventRequest = new Request(url, {
+    method,
+    body: data,
+    headers,
+  });
+
+  return fetch(eventRequest, {
+    backend: url.includes("api-ssx") ? BACKEND_TRACKING : BACKEND_DATA,
+  });
 }

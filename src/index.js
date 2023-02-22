@@ -2,7 +2,7 @@
 import { KameleoonClient } from "kameleoon-client-javascript";
 import cookie from "cookie";
 import { v4 } from "uuid";
-import { getConfigDataFile } from "./helpers";
+import { getConfigDataFile, dispatchEvent } from "./helpers";
 
 const KAMELEOON_USER_ID = "kameleoon_user_id";
 
@@ -16,26 +16,26 @@ async function handleRequest(event) {
 
   // Fetch config file from Kameleoon CDN and cache it using Fastly for given number of seconds
   // Get the siteCode from Kameleoon Platform
-  const configDataFile = await getConfigDataFile("<YOUR_SITE_CODE>", 600);
+  const configDataFile = await getConfigDataFile("YOUR_SITE_CODE", 600);
   const parsedConfigDataFile = JSON.parse(configDataFile);
 
   // Initialize the KameleoonClient
   const kameleoonClient = new KameleoonClient(
     // Get the siteCode from Kameleoon Platform
-    "<YOUR_SITE_CODE>",
+    "YOUR_SITE_CODE",
     // Add the necessary configurations. For example {environment: production}
     {},
     /***
      * @param configDataFile - Fetched and cached configDataFile from cdn
-     * @param fetchCallback - Fetch API which is used in our sdk to fetch data and perform a data tracking and it should be passed always along with configDataFile
+     * @param dispatchEvent - An event dispatcher to manage network calls such as tracking and retrieving data from remote source.
      */
-    { configDataFile: parsedConfigDataFile, fetchCallback: fetch }
+    { configDataFile: parsedConfigDataFile, dispatchEvent }
   );
 
   // Use kameleoonClient instance to access SDK methods
   const variationKey = kameleoonClient.getFeatureVariationKey(
     visitorCode,
-    "<YOUR_FEATURE_KEY>"
+    "YOUR_FEATURE_KEY"
   );
   console.log(`The variationKey is ${variationKey}`);
 
