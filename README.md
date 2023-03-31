@@ -2,7 +2,7 @@
 
 > Starter Kit to run Kameleoon Experimentation and Feature Flags on [Fastly Compute@Edge service](https://www.fastly.com/products/edge-compute).
 
-This Kameleoon Starter Kit for Fastly Compute@Edge uses and extends our [Kameleoon JS SDK](https://developers.kameleoon.com/javascript-sdk.html) to provide experimentation and feature flagging on the edge. Without this starter kit, the JS SDK cannot be used with Fasty. For more information on how to run Feature Flags and Experiments with our platform follow the steps outlined in our documentation [here](https://developers.kameleoon.com/javascript-sdk.html).
+This Kameleoon Starter Kit for Fastly Compute@Edge uses and extends our [Kameleoon JS SDK](https://developers.kameleoon.com/feature-management-and-experimentation/web-sdks/js-sdk-deprecated) to provide experimentation and feature flagging on the edge. Without this starter kit, the JS SDK cannot be used with Fastly. For more information on how to run Feature Flags and Experiments with our platform follow the steps outlined in our documentation [here](https://developers.kameleoon.com/feature-management-and-experimentation/web-sdks/js-sdk-deprecated).
 
 ### External Network Calls via Fastly
 
@@ -54,4 +54,4 @@ fastly log-tails
 
 - [Fastly Compute@Edge Documentation](https://docs.fastly.com/products/compute-at-edge)
 - [JavaScript on Compute@Edge](https://developer.fastly.com/learning/compute/javascript)
-- [Kameleoon JS SDK Documentation](https://developers.kameleoon.com/javascript-sdk.html)
+- [Kameleoon JS SDK Documentation](https://developers.kameleoon.com/feature-management-and-experimentation/web-sdks/js-sdk-deprecated)
