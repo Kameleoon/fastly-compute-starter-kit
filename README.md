@@ -12,6 +12,8 @@ Kameleoon Starter Kit uses fetch API which comes from Fastly Compute@Edge instea
 
 The `externalClientConfiguration` is a JSON representation of feature flags and experiments. It contains all the data needed to deliver and track your flag deliveries and experiments. This file is fetched outside of NodeJS SDK in starter kit using Fastly Compute@Edge fetch API. Thus, it is cached on Fastly with custom `ttl` in seconds.
 
+## How to use
+
 ### Before Get started
 
 These steps should be completed before you get started:
