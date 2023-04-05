@@ -5,6 +5,12 @@ All notable changes to this Fastly Compute@Edge project will be documented in th
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.2.0] - April 05, 2023
+
+### Feature
+
+- Use new @kameleoon/nodejs-sdk
+
 ## [0.1.1] - March 31, 2023
 
 ### Docs

@@ -1,8 +1,7 @@
-/// <reference types="@fastly/js-compute" />
-import { KameleoonClient } from "kameleoon-client-javascript";
+import { KameleoonClient } from "@kameleoon/nodejs-sdk";
 import cookie from "cookie";
 import { v4 } from "uuid";
-import { getConfigDataFile, dispatchEvent } from "./helpers";
+import { getConfigDataFile, requestDispatcher } from "./helpers";
 
 const KAMELEOON_USER_ID = "kameleoon_user_id";
 
@@ -12,28 +11,34 @@ async function handleRequest(event) {
   const cookies = cookie.parse(event.request.headers.get("Cookie") || "");
 
   // Fetch user id from the cookie if available to make sure that results are sticky.
+  // If you have your own unique user identifier, please replace v4() with it.
   const visitorCode = cookies[KAMELEOON_USER_ID] || v4();
+  // Get the siteCode from Kameleoon Platform
+  const siteCode = "YOUR_SITE_CODE";
 
   // Fetch config file from Kameleoon CDN and cache it using Fastly for given number of seconds
-  // Get the siteCode from Kameleoon Platform
-  const configDataFile = await getConfigDataFile("YOUR_SITE_CODE", 600);
+  const configDataFile = await getConfigDataFile(siteCode, 600);
   const parsedConfigDataFile = JSON.parse(configDataFile);
 
   // Initialize the KameleoonClient
-  const kameleoonClient = new KameleoonClient(
-    // Get the siteCode from Kameleoon Platform
-    "YOUR_SITE_CODE",
-    // Add the necessary configurations. For example {environment: production}
-    {},
+  const kameleoonClient = new KameleoonClient({
+    siteCode,
     /***
-     * @param configDataFile - Fetched and cached configDataFile from cdn
-     * @param dispatchEvent - An event dispatcher to manage network calls such as tracking and retrieving data from remote source.
+     * @param externalClientConfiguration - Fetched and cached client configuration from cdn
+     * @param externalRequestDispatcher - A request dispatcher to manage external network calls such as tracking and retrieving data from remote source.
      */
-    { configDataFile: parsedConfigDataFile, dispatchEvent }
-  );
+    integrations: {
+      externalClientConfiguration: parsedConfigDataFile,
+      externalRequestDispatcher: requestDispatcher,
+    },
+  });
+
+  // Initialize the client before using the methods
+  await kameleoonClient.initialize();
 
   // Use kameleoonClient instance to access SDK methods
-  const variationKey = kameleoonClient.getFeatureVariationKey(
+  // You can refer to our developers documentation to find out more about methods
+  const variationKey = kameleoonClient.getFeatureFlagVariationKey(
     visitorCode,
     "YOUR_FEATURE_KEY"
   );

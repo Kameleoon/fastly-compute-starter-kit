@@ -2,17 +2,15 @@
 
 > Starter Kit to run Kameleoon Experimentation and Feature Flags on [Fastly Compute@Edge service](https://www.fastly.com/products/edge-compute).
 
-This Kameleoon Starter Kit for Fastly Compute@Edge uses and extends our [Kameleoon JS SDK](https://developers.kameleoon.com/feature-management-and-experimentation/web-sdks/js-sdk-deprecated) to provide experimentation and feature flagging on the edge. Without this starter kit, the JS SDK cannot be used with Fastly. For more information on how to run Feature Flags and Experiments with our platform follow the steps outlined in our documentation [here](https://developers.kameleoon.com/feature-management-and-experimentation/web-sdks/js-sdk-deprecated).
+This Kameleoon Starter Kit for Fastly Compute@Edge uses and extends our [Kameleoon NodeJS SDK](https://developers.kameleoon.com/feature-management-and-experimentation/web-sdks/nodejs-sdk) to provide experimentation and feature flagging on the edge. Without this starter kit, the NodeJS SDK cannot be used with Fastly. For more information on how to run Feature Flags and Experiments with our platform follow the steps outlined in our documentation [here](https://developers.kameleoon.com/feature-management-and-experimentation/web-sdks/nodejs-sdk).
 
 ### External Network Calls via Fastly
 
-Kameleoon Starter Kit uses fetch API which comes from Fastly Compute@Edge instead of standard network APIs. That's why JS SDK accepts this `dispatchEvent` callback on client initialization to override the standard API call. Note that, `dispatchEvent` should be passed always along with `configDataFile` to the `KameleoonClient`.
+Kameleoon Starter Kit uses fetch API which comes from Fastly Compute@Edge instead of standard network APIs. That's why NodeJS SDK accepts this `externalRequestDispatcher` callback on client initialization to override the standard API call. Note that, `externalRequestDispatcher` should be passed always along with `externalClientConfiguration` to the `KameleoonClient` initialization.
 
 ### Configuration Data File
 
-The `configDataFile` is a JSON representation of feature flags and experiments. It contains all the data needed to deliver and track your flag deliveries and experiments. This file is fetched outside of JS SDK in starter kit using Fastly Compute@Edge fetch API. Thus, it is cached on Fastly with custom `ttl` in seconds.
-
-## How to use
+The `externalClientConfiguration` is a JSON representation of feature flags and experiments. It contains all the data needed to deliver and track your flag deliveries and experiments. This file is fetched outside of NodeJS SDK in starter kit using Fastly Compute@Edge fetch API. Thus, it is cached on Fastly with custom `ttl` in seconds.
 
 ### Before Get started
 
@@ -54,4 +52,4 @@ fastly log-tails
 
 - [Fastly Compute@Edge Documentation](https://docs.fastly.com/products/compute-at-edge)
 - [JavaScript on Compute@Edge](https://developer.fastly.com/learning/compute/javascript)
-- [Kameleoon JS SDK Documentation](https://developers.kameleoon.com/feature-management-and-experimentation/web-sdks/js-sdk-deprecated)
+- [Kameleoon NodeJS SDK Documentation](https://developers.kameleoon.com/feature-management-and-experimentation/web-sdks/nodejs-sdk)

@@ -14,12 +14,8 @@ service_id = ""
     address = "client-config.kameleoon.com"
     port = 443
     
-  [setup.backends.kameleoontracking]
-    address = "api-ssx.kameleoon.com"
-    port = 443
-    
   [setup.backends.kameleoondata]
-    address = "api-data.kameleoon.com"
+    address = "data.kameleoon.io"
     port = 443
 
 [local_server.backends]
@@ -27,8 +23,5 @@ service_id = ""
   [local_server.backends.kameleooncdn]
     url = "https://client-config.kameleoon.com"
     
-  [local_server.backends.kameleoontracking]
-    url = "https://api-ssx.kameleoon.com"
-    
   [local_server.backends.kameleoondata]
-    url = "https://api-data.kameleoon.com"
+    url = "https://data.kameleoon.io"
