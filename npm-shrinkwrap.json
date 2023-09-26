@@ -10,7 +10,7 @@
       "license": "MIT",
       "dependencies": {
         "@fastly/js-compute": "^1.1.0",
-        "@kameleoon/nodejs-sdk": "^2.6.3",
+        "@kameleoon/nodejs-sdk": "^2.7.0",
         "cookie": "^0.5.0",
         "stream-http": "^3.2.0",
         "uuid": "^9.0.0"
@@ -217,9 +217,9 @@
       }
     },
     "node_modules/@kameleoon/javascript-sdk-core": {
-      "version": "2.8.3",
-      "resolved": "https://nexus.kameleoon.net/repository/npm-modules/@kameleoon/javascript-sdk-core/-/javascript-sdk-core-2.8.3.tgz",
-      "integrity": "sha512-TSXy4xBozZ26EeQRhk2nmo0mdR1AA0J+QiCZNeKB1EYRcwjlsACorpeV1mFNCECKyQEFgKDeupihY1bH0F6lCg==",
+      "version": "2.9.0",
+      "resolved": "https://nexus.kameleoon.net/repository/npm-modules/@kameleoon/javascript-sdk-core/-/javascript-sdk-core-2.9.0.tgz",
+      "integrity": "sha512-nQ74h49uWuR0UEWyaIYRe5C5Aqe490CWPBprc7QjLexOt8L4U30uMhl7tl0ZBh03gmEsm0TVeg3BB+i5M7emIw==",
       "license": "ISC",
       "dependencies": {
         "crypto-js": "^4.1.1",
@@ -227,9 +227,9 @@
       }
     },
     "node_modules/@kameleoon/nodejs-sdk": {
-      "version": "2.6.3",
-      "resolved": "https://nexus.kameleoon.net/repository/npm-modules/@kameleoon/nodejs-sdk/-/nodejs-sdk-2.6.3.tgz",
-      "integrity": "sha512-T/o6raOxMxA1OPjnzFms9V4ikT7RAUfHqv94pF2Sf9pxl8Bl4nij/EcIWYtC4osqMw1sIv7gfLERPlyn8B9kBA==",
+      "version": "2.7.0",
+      "resolved": "https://nexus.kameleoon.net/repository/npm-modules/@kameleoon/nodejs-sdk/-/nodejs-sdk-2.7.0.tgz",
+      "integrity": "sha512-NHvY2yf/Ct2BgpHBrmAtshzzLGTZs0BDDWC1QknIUsmkJDRoIJNRPN0Sa2x0QakcZNpbiwzs61pY5CRtvI4/Pw==",
       "license": "ISC",
       "dependencies": {
         "@kameleoon/javascript-sdk-core": "^2.2.0",
@@ -2611,18 +2611,18 @@
       }
     },
     "@kameleoon/javascript-sdk-core": {
-      "version": "2.8.3",
-      "resolved": "https://nexus.kameleoon.net/repository/npm-modules/@kameleoon/javascript-sdk-core/-/javascript-sdk-core-2.8.3.tgz",
-      "integrity": "sha512-TSXy4xBozZ26EeQRhk2nmo0mdR1AA0J+QiCZNeKB1EYRcwjlsACorpeV1mFNCECKyQEFgKDeupihY1bH0F6lCg==",
+      "version": "2.9.0",
+      "resolved": "https://nexus.kameleoon.net/repository/npm-modules/@kameleoon/javascript-sdk-core/-/javascript-sdk-core-2.9.0.tgz",
+      "integrity": "sha512-nQ74h49uWuR0UEWyaIYRe5C5Aqe490CWPBprc7QjLexOt8L4U30uMhl7tl0ZBh03gmEsm0TVeg3BB+i5M7emIw==",
       "requires": {
         "crypto-js": "^4.1.1",
         "ts-res": "^1.1.1"
       }
     },
     "@kameleoon/nodejs-sdk": {
-      "version": "2.6.3",
-      "resolved": "https://nexus.kameleoon.net/repository/npm-modules/@kameleoon/nodejs-sdk/-/nodejs-sdk-2.6.3.tgz",
-      "integrity": "sha512-T/o6raOxMxA1OPjnzFms9V4ikT7RAUfHqv94pF2Sf9pxl8Bl4nij/EcIWYtC4osqMw1sIv7gfLERPlyn8B9kBA==",
+      "version": "2.7.0",
+      "resolved": "https://nexus.kameleoon.net/repository/npm-modules/@kameleoon/nodejs-sdk/-/nodejs-sdk-2.7.0.tgz",
+      "integrity": "sha512-NHvY2yf/Ct2BgpHBrmAtshzzLGTZs0BDDWC1QknIUsmkJDRoIJNRPN0Sa2x0QakcZNpbiwzs61pY5CRtvI4/Pw==",
       "requires": {
         "@kameleoon/javascript-sdk-core": "^2.2.0",
         "eventsource": "^2.0.2",

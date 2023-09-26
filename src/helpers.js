@@ -3,10 +3,8 @@ import { CacheOverride } from "fastly:cache-override";
 const BACKEND_CDN = "kameleooncdn";
 const BACKEND_DATA = "kameleoondata";
 
-export async function getConfigDataFile(siteCode, ttl) {
-  const dataFileRequest = new Request(
-    `https://client-config.kameleoon.com/mobile?siteCode=${siteCode}`
-  );
+export async function getConfigDataFile(url, ttl) {
+  const dataFileRequest = new Request(url);
 
   const cacheOverride = new CacheOverride("override", {
     ttl: ttl,
