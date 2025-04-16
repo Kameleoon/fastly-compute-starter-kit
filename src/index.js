@@ -1,58 +1,60 @@
-import { KameleoonClient, KameleoonUtils } from "@kameleoon/nodejs-sdk";
+import 'abortcontroller-polyfill';
+import { KameleoonClient } from "@kameleoon/nodejs-sdk";
+import { FastlyEventSource } from "./eventSource";
+import { FastlyRequester } from "./requester";
+import { FastlyVisitorCodeManager } from "./visitorCodeManager";
 import cookie from "cookie";
-import { v4 } from "uuid";
-import { getConfigDataFile, requestDispatcher } from "./helpers";
 
-const KAMELEOON_USER_ID = "kameleoon_user_id";
+// Get your siteCode from Kameleoon Platform
+const siteCode = "SITE_CODE";
+const featureKey = "FEATURE_FLAG_KEY";
 
 addEventListener("fetch", (event) => event.respondWith(handleRequest(event)));
 
 async function handleRequest(event) {
-  const cookies = cookie.parse(event.request.headers.get("Cookie") || "");
+    // Create a new Kameleoon client instance
+    const kameleoonClient = new KameleoonClient({
+        siteCode: siteCode,
+        credentials: {
+            clientId: 'my_client_id',
+            clientSecret: 'my_client_secret',
+        },
+        externals: {
+            visitorCodeManager: new FastlyVisitorCodeManager(),
+            eventSource: new FastlyEventSource(),
+            requester: new FastlyRequester(),
+        },
+    });
 
-  // Fetch user id from the cookie if available to make sure that results are sticky.
-  // If you have your own unique user identifier, please replace v4() with it.
-  const visitorCode = cookies[KAMELEOON_USER_ID] || v4();
-  // Get your siteCode from Kameleoon Platform
-  const siteCode = "YOUR_SITE_CODE";
+    // Parse cookies from the request for retrieving the visitor code
+    const cookies = cookie.parse(event.request.headers.get("Cookie") || "");
 
-  // Get the Kameleoon Client Configuration URL from KameleoonUtils
-  const url = KameleoonUtils.getClientConfigurationUrl(siteCode);
+    // Create a new Headers object to set the response headers and cookies
+    let headers = new Headers();
+    headers.set("Content-Type", "text/plain");
 
-  // Fetch config file from Kameleoon Client Configuration URL and cache it using Fastly for given number of seconds
-  const configDataFile = await getConfigDataFile(url, 600);
-  const parsedConfigDataFile = JSON.parse(configDataFile);
+    // Fetch user id from the cookie if available to make sure that results are sticky.
+    // and set the cookie if not available.
+    const visitorCode = kameleoonClient.getVisitorCode({
+        input: cookies,
+        output: headers,
+    });
+    console.log(`Visitor code: ${visitorCode}`);
 
-  // Initialize the KameleoonClient
-  const kameleoonClient = new KameleoonClient({
-    siteCode,
-    /***
-     * @param externalClientConfiguration - Fetched and cached client configuration from cdn
-     * @param externalRequestDispatcher - A request dispatcher to manage external network calls such as tracking and retrieving data from remote source.
-     */
-    integrations: {
-      externalClientConfiguration: parsedConfigDataFile,
-      externalRequestDispatcher: requestDispatcher,
-    },
-  });
+    // Initialize the client before using the methods
+    await kameleoonClient.initialize();
 
-  // Initialize the client before using the methods
-  await kameleoonClient.initialize();
+    // Use kameleoonClient instance to access SDK methods
+    // You can refer to our developers documentation to find out more about methods
+    const variation = kameleoonClient.getVariation({
+        visitorCode,
+        featureKey,
+        track: false,
+    });
+    console.log(`The variationKey is ${variation.key}`);
 
-  // Use kameleoonClient instance to access SDK methods
-  // You can refer to our developers documentation to find out more about methods
-  const variationKey = kameleoonClient.getFeatureFlagVariationKey(
-    visitorCode,
-    "YOUR_FEATURE_KEY"
-  );
-  console.log(`The variationKey is ${variationKey}`);
-
-  let headers = new Headers();
-  headers.set("Content-Type", "text/plain");
-  headers.set("Set-Cookie", cookie.serialize(KAMELEOON_USER_ID, visitorCode));
-
-  return new Response(
-    "Welcome to Kameleoon Starter Kit, use 'fastly log-tail' command for results",
-    { status: 200, headers }
-  );
+    return new Response(
+        "Welcome to Kameleoon Starter Kit, use 'fastly log-tail' command for results",
+        { status: 200, headers }
+    );
 }

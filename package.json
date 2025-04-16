@@ -16,12 +16,14 @@
     "node": ">=16.0.0"
   },
   "devDependencies": {
+    "buffer": "^6.0.3",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.0"
   },
   "dependencies": {
-    "@fastly/js-compute": "^1.1.0",
-    "@kameleoon/nodejs-sdk": "^2.7.0",
+    "@fastly/js-compute": "^3.33.4",
+    "@kameleoon/nodejs-sdk": "^5.9.1",
+    "abortcontroller-polyfill": "^1.7.8",
     "cookie": "^0.5.0",
     "stream-http": "^3.2.0",
     "uuid": "^9.0.0"

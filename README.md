@@ -6,11 +6,7 @@ This Kameleoon Starter Kit for Fastly Compute@Edge uses and extends our [Kameleo
 
 ### External Network Calls via Fastly
 
-Kameleoon Starter Kit uses fetch API which comes from Fastly Compute@Edge instead of standard network APIs. That's why NodeJS SDK accepts this `externalRequestDispatcher` callback on client initialization to override the standard API call. Note that, `externalRequestDispatcher` should be passed always along with `externalClientConfiguration` to the `KameleoonClient` initialization.
-
-### Configuration Data File
-
-The `externalClientConfiguration` is a JSON representation of feature flags and experiments. It contains all the data needed to deliver and track your flag deliveries and experiments. This file is fetched outside of NodeJS SDK in starter kit using Fastly Compute@Edge fetch API. Thus, it is cached on Fastly with custom `ttl` in seconds.
+The Kameleoon Starter Kit uses the `fetch API` provided by Fastly Compute@Edge instead of standard network APIs. Therefore, the NodeJS SDK requires the `externals.requester` callback during client initialization to override the default API behavior.
 
 ## How to use
 
@@ -48,6 +44,14 @@ fastly compute publish
 
 ```sh
 fastly log-tails
+```
+
+### Development
+
+For local development, you can use the Fastly Compute@Edge CLI to run your service locally. This allows you to test your changes before deploying them to production.
+
+```sh
+fastly compute serve
 ```
 
 ## Additional resources
