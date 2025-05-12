@@ -11,9 +11,9 @@ service_id = ""
 [setup.backends]
 
   [setup.backends.kameleooncdn]
-    address = "client-config.kameleoon.com"
+    address = "sdk-config.kameleoon.eu"
     port = 443
-    
+
   [setup.backends.kameleoondata]
     address = "data.kameleoon.io"
     port = 443
@@ -21,7 +21,7 @@ service_id = ""
 [local_server.backends]
 
   [local_server.backends.kameleooncdn]
-    url = "https://client-config.kameleoon.com"
-    
+    url = "https://sdk-config.kameleoon.eu"
+
   [local_server.backends.kameleoondata]
     url = "https://data.kameleoon.io"
